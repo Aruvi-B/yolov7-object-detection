@@ -14,6 +14,13 @@ from utils.general import check_img_size, check_requirements, check_imshow, non_
 from utils.plots import plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
 
+import gdown
+
+# Download yolov7.pt from Google Drive
+url = "https://drive.google.com/file/d/1760Pz28v2r0ccx96f3IhRVu9d-oB7yEi/view?usp=drive_link"
+output = "weights/yolov7.pt"
+gdown.download(url, output, quiet=False)
+
 
 def detect(save_img=False):
     source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, not opt.no_trace
@@ -197,3 +204,4 @@ if __name__ == '__main__':
                 strip_optimizer(opt.weights)
         else:
             detect()
+
